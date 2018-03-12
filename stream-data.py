@@ -1,13 +1,13 @@
 import time
-from sense_hat import SenceHat
+from sense_hat import SenseHat
 
-s = SenceHat()
+s = SenseHat()
 
 
 def main():
     while True:
-        orientation = sense.get_orientation()
-        print("p: {pitch}, r: {roll}, y: {yaw}".format(**orientation))
+        o = sense.get_orientation()
+        print("pitch: {3:.2f}, roll: {3:.2f}, y: {3:.2f}".format(o['pitch'], o['roll'], p['yaw']))
 
 
 
