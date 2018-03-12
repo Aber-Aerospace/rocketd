@@ -8,25 +8,35 @@ names = {0: 'x', 1: 'y', 2: 'z', 3: 'pitch', 4: 'yaw', 5: 'roll'}
 startTime = time.time()
 startOrientation = s.get_orientation_degrees()
 f = open('testFile', 'w')
-f.write("time"+tab3+"pitch"+tab3+"yaw"+tab3+"roll"+tab3+" x_Acc"+tab3+"y_Acc"+tab3+"z_Acc"+tab3+"x_Gyro"+tab3+"y_Gyro"+tab3+"z_Gyro"+tab3+"humidity"+tab2+"temp"+tab3+"pressure\n")
+f.write("time"+tab3+"pitch"+tab3+"yaw"+tab3+"roll"+tab3+" x_Acc"+tab3+"y_Acc"+tab3+"z_Acc" +
+        tab3+"x_Gyro"+tab3+"y_Gyro"+tab3+"z_Gyro"+tab3+"humidity"+tab2+"temp"+tab3+"pressure\n")
 hasWritten = True
+
+
 def writeNewLine(info):
     f.write("{0:.16f}".format(info))
     f.write('\n')
+
+
 def write(info):
     f.write("{0:.16f}".format(info))
     f.write('\t')
+
+
 def writeArray(info, offset):
     for i in range(0, 3):
         f.write("{0:.16f}".format(info[names[i+offset]]))
         f.write('\t')
+
+
 def checkOrientation(info):
     ret = False
-    if((startOrientation['pitch']+80<info['pitch'])
-       and (startOrientation['pitch']+260>info['pitch'])):
+    if((startOrientation['pitch']+80 < info['pitch'])
+       and (startOrientation['pitch']+260 > info['pitch'])):
         ret = True
     return ret
-    
+
+
 while True:
     currTime = time.time()-startTime
     write(currTime)
@@ -49,5 +59,3 @@ while True:
     else:
         hasWritten = True
 f.close()
-    
-    
